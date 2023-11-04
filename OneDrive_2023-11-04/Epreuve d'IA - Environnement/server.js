@@ -4,6 +4,7 @@ const { join } = require('node:path');
 const { Server } = require('socket.io');
 const { Plant } = require('./game/Plant');
 const path = require("path")
+const NavigationAI = require('./game/NavigationAI.js');
 
 const app = express();
 const server = createServer(app);
