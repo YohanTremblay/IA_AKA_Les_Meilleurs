@@ -4,7 +4,7 @@ const { join } = require('node:path');
 const { Server } = require('socket.io');
 const { Plant } = require('./game/Plant');
 const path = require("path")
-const NavigationAI = require('./game/NavigationAI.js');
+const NavigationAI = require('./NavigationAI');
 
 const app = express();
 const server = createServer(app);
@@ -90,13 +90,19 @@ io.on('connection', (socket) => {
     valves[level_name].forEach(valve => {
         rooms[game_id].addValve(valve[0], valve[1])
     });
-    // Add agent
+    const agentStart = start_points[level_name];
+    const nearestValve = NavigationAI.findNearestValve(maps[level_name], agentStart, valves[level_name]);
+
+  // Add agent
     agent_id = rooms[game_id].addAgent()
     console.log(game_id)
     console.log(agent_id)
+    console.log('nearestValve', nearestValve)
     // console.log(rooms)
     // Callback to client with game_id and agent_id
     callback([game_id, agent_id])
+
+    //socket.emit('nearestValve', nearestValve);
   })
 
   // Websocket event "gamestatus" handler : Return JSON string of rooms[game_id] status
