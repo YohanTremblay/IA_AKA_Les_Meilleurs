@@ -131,7 +131,7 @@ function moveAgent(map, start, valves) {
         currentIndex++;
 
         // Appelez moveOneStep() récursivement pour effectuer le prochain déplacement
-        setTimeout(moveOneStep, 1000); // Attendez 1 seconde entre chaque déplacement
+        setTimeout(moveOneStep, 500); // Attendez 1 seconde entre chaque déplacement
       }
     }
 
@@ -141,7 +141,6 @@ function moveAgent(map, start, valves) {
     console.log("Aucun chemin trouvé.");
   }
 }
-
 module.exports = {
   moveAgent,
 };
