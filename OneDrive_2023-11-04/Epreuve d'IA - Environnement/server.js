@@ -91,13 +91,14 @@ io.on('connection', (socket) => {
         rooms[game_id].addValve(valve[0], valve[1])
     });
     const agentStart = start_points[level_name];
-    const nearestValve = NavigationAI.findNearestValve(maps[level_name], agentStart, valves[level_name]);
+    NavigationAI.moveAgent(maps[level_name], agentStart, valves[level_name]);
+    
 
   // Add agent
     agent_id = rooms[game_id].addAgent()
     console.log(game_id)
     console.log(agent_id)
-    console.log('nearestValve', nearestValve)
+    //console.log('nearestValve', nearestValve)
     // console.log(rooms)
     // Callback to client with game_id and agent_id
     callback([game_id, agent_id])
