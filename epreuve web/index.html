@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur de PDF</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Générateur de PDF personnalisés</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Données JSON</h2>
+            <textarea id="jsonData" placeholder="Entrez vos données JSON ici..."></textarea>
+            <button id="generatePdfButton">Générer PDF</button>
+        </section>
+        <section>
+            <h2>Aperçu PDF</h2>
+            <div id="pdfPreview">
+                <!-- L'aperçu du PDF généré apparaîtra ici. -->
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Votre Société</p>
+    </footer>
+    <script src="app.js"></script>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/vfs_fonts.js"></script>
+
+</html>
