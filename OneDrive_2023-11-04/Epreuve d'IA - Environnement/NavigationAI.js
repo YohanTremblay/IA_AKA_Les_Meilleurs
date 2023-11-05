@@ -1,3 +1,4 @@
+
 // Fonction A* pour trouver le chemin optimal
 function findNearestValve(map, start, valves) {
   const openList = [];
@@ -97,6 +98,16 @@ function heuristic(current, goal) {
       node = node.parent;
     }
     return path;
+  }
+
+  function testMoveRight({game_id, agent_id}){
+    socket.emit("move", [game_id, agent_id, "RIGHT"], (response) => {
+        game_status = response[0]
+        reward = response[1]
+        // elem_gamestatus.innerText = game_status
+        displayStatus(game_status)
+        elem_reward.innerText = reward
+      })
   }
 
 // Créez une fonction qui effectue le déplacement de l'agent en utilisant le chemin
