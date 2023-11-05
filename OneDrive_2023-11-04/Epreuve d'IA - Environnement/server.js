@@ -41,7 +41,7 @@ maps = {
 
 valves = {
     "lvl0" : [
-        [0, 2],
+        [2, 2],
         [2, 4],
         [4, 3]
     ],
@@ -93,8 +93,6 @@ io.on('connection', (socket) => {
     const agentStart = start_points[level_name];
 
     
-    
-
   // Add agent
     agent_id = rooms[game_id].addAgent()
     console.log(game_id)

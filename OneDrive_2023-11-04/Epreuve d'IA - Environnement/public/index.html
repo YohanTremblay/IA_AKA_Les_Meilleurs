@@ -318,53 +318,57 @@ function heuristic(current, goal) {
 
 // Créez une fonction qui effectue le déplacement de l'agent en utilisant le chemin
 function moveAgent(map, start, valves) {
-  console.log('moveAgent')
-  const path = findNearestValve(map, start, valves);
-
-  if (path) {
-    // À ce stade, vous avez le chemin optimal dans la variable "path"
-    // Implémentez ici la logique de déplacement de l'agent en suivant le chemin
-
-    let currentIndex = 0;
 
   
-    function moveOneStep() {
-      console.log('sdfdsf')
-      if (currentIndex < path.length) {
-        const nextStep = path[currentIndex];
-        const agentX = start[0];
-        const agentY = start[1];
+    const path = findNearestValve(map, start, valves);
 
-        if (nextStep[0] > agentX) {
-          // Déplacez l'agent à droite
-          moveRight()
-        } else if (nextStep[0] < agentX) {
-          // Déplacez l'agent à gauche
-          // moveLeft()
-        } else if (nextStep[1] > agentY) {
-          // Déplacez l'agent en bas
-          moveRight()
-        } else if (nextStep[1] < agentY) {
-          // Déplacez l'agent en haut
-          moveUp()
-        }
+if (path) {
+  // À ce stade, vous avez le chemin optimal dans la variable "path"
+  // Implémentez ici la logique de déplacement de l'agent en suivant le chemin
 
-        // Mettez à jour les coordonnées de l'agent après le déplacement
-        start[0] = nextStep[0];
-        start[1] = nextStep[1];
+  let currentIndex = 0;
 
-        currentIndex++;
 
-        // Appelez moveOneStep() récursivement pour effectuer le prochain déplacement
-        setTimeout(moveOneStep, 500); // Attendez 1 seconde entre chaque déplacement
+  function moveOneStep() {
+    console.log('sdfdsf')
+    if (currentIndex < path.length) {
+      const nextStep = path[currentIndex];
+      const agentX = start[0];
+      const agentY = start[1];
+
+      if (nextStep[0] > agentX) {
+        // Déplacez l'agent à droite
+        moveDown()
+      } else if (nextStep[0] < agentX) {
+        // Déplacez l'agent à gauche
+        moveDown()
+      } else if (nextStep[1] > agentY) {
+        // Déplacez l'agent en bas
+        moveRight()
+      } else if (nextStep[1] < agentY) {
+        // Déplacez l'agent en haut
+        moveDown()
       }
-    }
 
-    // Lancez le déplacement initial
-    moveOneStep();
-  } else {
-    console.log("Aucun chemin trouvé.");
+      // Mettez à jour les coordonnées de l'agent après le déplacement
+      start[0] = nextStep[0];
+      start[1] = nextStep[1];
+
+      currentIndex++;
+
+      // Appelez moveOneStep() récursivement pour effectuer le prochain déplacement
+      setTimeout(moveOneStep, 500); // Attendez 1 seconde entre chaque déplacement
+    }
+    else{
+      lockout();
+    }
   }
+
+  // Lancez le déplacement initial
+  moveOneStep();
+} else {
+  console.log("Aucun chemin trouvé.");
+}
 }
     </script>
 </body>
